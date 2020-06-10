@@ -1,12 +1,18 @@
 homeTitle = 'Eddi Esteban'
 portfolioTitle = `Eddi's Portfolio`
 contactTitle = `Contact Eddi`
+let timeNow = Date.now()
+if (!localStorage.lastDateTime) localStorage.lastDateTime = Date.now()
+
+let lastTime = Number(localStorage.lastDateTime)
 
 function pageNameToggle(name){return name == document.title ? ' active' : ''}
 
 function portfolioItemGenerator(repo, index){
-    console.log(repo)
-    let {name:title, html_url: url, homepage:deployment, description:desc} = repo
+    let {name:title, 
+        html_url: url, 
+        homepage:deployment, 
+        description:desc} = repo
     let img = `./assets/img/me-2020-05-14.png`
     document.querySelector(`#portfolio`).innerHTML += `<div class="col-12 col-sm-6 col-md-4 mt-2">`+
         `<div class="card"  href="index.html">`+
@@ -50,7 +56,6 @@ async function requestRepos(){
     return fetch(request)
         .then(function(response){
             if (response.ok) {
-                console.log('hi')
                 return response.json()
             } else {Promise.reject(localStorage.exists = 'false')}
         })
@@ -59,10 +64,18 @@ async function requestRepos(){
 
 (async()=>{
     if (document.title == portfolioTitle){
-        let repos = await requestRepos()
+        let repos
+        // cache reset every hour
+        if ((Math.abs(timeNow - lastTime) < 1000*60*60) && localStorage.repos){ //if current time is less than an hour from last checked 
+            repos = JSON.parse(localStorage.repos) 
+        } else{
+            repos = await requestRepos()
+            repos.sort((a, b) => (Date.parse(a.created_at) < Date.parse(b.created_at)) ? 1 : -1)
+            localStorage.repos = JSON.stringify(repos)
+        }
+        console.log(repos)
         for (let i = 0; i < repos.length; i ++){
             let repo = repos[i]
-            console.log(repo)
             portfolioItemGenerator(repo, i)
     }
     
