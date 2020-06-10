@@ -13,6 +13,9 @@ function portfolioItemGenerator(repo, index){
         html_url: url, 
         homepage:deployment, 
         description:desc} = repo
+    title = title.replace(/^HW-[0-9]+-/,'' )
+    title = title.replace(/-/g, ' ')
+    console.log(title)
     let img = `./assets/img/me-2020-05-14.png`
     document.querySelector(`#portfolio`).innerHTML += `<div class="col-12 col-sm-6 col-md-4 mt-2">`+
         `<div class="card"  href="index.html">`+
