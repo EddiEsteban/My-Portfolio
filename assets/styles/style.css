@@ -1,8 +1,19 @@
+
+
 #portfolio{
     justify-content: center;
 }
 #navbar{
     margin-bottom: 1rem;
+    background-color:#876543;
+    position: fixed;
+    width:100%;
+    top:0;
+    z-index:1;
+    transition: top 0.2s;
+}
+.container{
+    margin-top:4rem;
 }
 .card{
     height:100%;
@@ -12,9 +23,7 @@
     height:50vh;
     object-fit:cover;
 }
-nav{
-    background-color:#876543
-}
+
 /* #itme{
     
 } */

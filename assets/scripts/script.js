@@ -54,6 +54,17 @@ function init(){
 }
 init()
 
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.querySelector("#navbar").style.top = "0";
+  } else {
+    document.querySelector("#navbar").style.top = "-3.5rem";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
 function sendEmail(event){
     event.preventDefault()
 }
