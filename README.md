@@ -1,17 +1,9 @@
-My online portfolio. It has three pages: Home, Portfolio, and Contact. Each page has a navbar.
+My online portfolio. It has three pages: Home, Portfolio, and Contact. Each page has a navbar that links to the rest of the pages.
 
-Home has a short bio as well as a picture of myself. The positioning of these two relative to each other dynamically changes with the screen size.
+The home has a short bio as well as a picture of myself. The portfolio page requests my github repo information, and returns a section for each with a link.
 
-![Image of Home page](./assets/img/home_sample.png)
+![Demo](./assets/img/portfolio_demo_2020-06-10.gif)
 
-Portfolio has two placeholders for dummy projects. Their arrangement also dynamically changes. Buttons for each exist but do not link anywhere.
-
-![Image of Portfolio page](./assets/img/portfolio_sample.png)
-
-Contact has three forms and a submission button. A submission buton exists but does not link anywhere.
-
-![Image of Contact page](./assets/img/contact_sample.png)
-
-The navbar links to Home, Portfolio, and Contact pages. If the screensize is small enough, these nav links condense inside a hamburger dropdown.
+Contact has three forms and a submission button. This page is presumed to be further developed as I learn more about web development.
 
 View rendered site with Github Pages [here](https://eddiesteban.github.io/My-Portfolio/).

@@ -15,10 +15,9 @@ function portfolioItemGenerator(repo, index){
         description:desc} = repo
     title = title.replace(/^HW-[0-9]+-/,'' )
     title = title.replace(/-/g, ' ')
-    console.log(title)
     let img = `./assets/img/me-2020-05-14.png`
-    document.querySelector(`#portfolio`).innerHTML += `<div class="col-12 col-sm-6 col-md-4 mt-2">`+
-        `<div class="card"  href="index.html">`+
+    document.querySelector(`#portfolio`).innerHTML += ` <div class="col-12 col-sm-6 col-md-4 mt-2">`+
+        `<section><div class="card"  href="index.html">`+
             `<img src="${img}" class="card-img-top" alt="...">`+
                 `<div class="card-body">`+
                 `<h5 class="card-title">${title}</h5>`+
@@ -32,7 +31,7 @@ function portfolioItemGenerator(repo, index){
                         `Go to repository`+
                     `</button>`+
                 `</div>`+
-            `</div>`+
+            `</div></section>`+
         `</div>`
 }
 
@@ -91,7 +90,6 @@ async function requestRepos(){
             repos.sort((a, b) => (Date.parse(a.created_at) < Date.parse(b.created_at)) ? 1 : -1)
             localStorage.repos = JSON.stringify(repos)
         }
-        console.log(repos)
         for (let i = 0; i < repos.length; i ++){
             let repo = repos[i]
             portfolioItemGenerator(repo, i)
