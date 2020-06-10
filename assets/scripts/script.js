@@ -54,6 +54,10 @@ function init(){
 }
 init()
 
+function sendEmail(event){
+    event.preventDefault()
+}
+
 async function requestRepos(){
     let request = `https://api.github.com/users/EddiEsteban/repos`
     return fetch(request)
