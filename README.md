@@ -1,8 +1,9 @@
+<!-- push to gh-pages branch with `git subtree push --prefix public origin gh-pages` -->
 # My Portfolio
 
-✨✨ My online portfolio ✨✨. It has three pages: Home, Portfolio, and Contact. Each page has a navbar that links to the rest of the pages.
+My online portfolio. Visitors can navigate between three pages: Home, Portfolio, and Contact. 
 
-The home has a short bio as well as a picture of myself. The portfolio page requests my github repo information, and returns a section for each with two links: one for the deployed app, and one for the repo itself. Contact has three forms and a submission button. This page is presumed to be further developed as I learn more about web development.
+The home has a short bio as well as a picture of myself. The portfolio page requests my github repo information, and returns a section for each with two links: one for the deployed app, and one for the repo itself. Contact page lists the avenues through which I can be contacted. 
 
 ## Demonstration
 
