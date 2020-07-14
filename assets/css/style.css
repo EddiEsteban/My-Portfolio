@@ -3,10 +3,17 @@ BODY{
 }
 
 img.imgFoot{
-    height:4em;
+    max-height:100%;
+    max-width:100%;
     border:solid 1px #999;
     background-color:#fff;
-    padding:.2em
+    padding:.2em;
+    display:block;
+    float:right;
+}
+
+.card-footer{
+    height:4em;
 }
 
 #portfolio{
@@ -26,8 +33,8 @@ img.imgFoot{
 }
 .card-img-top{
     width: 100%;
-    height:50vh;
-    object-fit:cover;
+    height:40vh;
+    object-fit:contain;
 }
 
 /* #itme{

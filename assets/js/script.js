@@ -8,36 +8,52 @@ let lastTime = Number(localStorage.lastDateTime)
 
 function pageNameToggle(name){return name == document.title ? ' active' : ''}
 
-function portfolioItemGenerator(repo, index){
-    let {name:title, 
+function portfolioItemGenerator(
+    {
+        name:title, 
         html_url: url, 
         homepage:deployment, 
-        description:desc} = repo
-    console.log({title, url, deployment, desc})
+        description:desc
+    }){
+    
+    // console.log({title, url, deployment, desc})
     title = title.replace(/^HW-[0-9]+-/,'' )
     title = title.replace(/-/g, ' ')
-    let img = `./assets/img/me-2020-05-14.png`
+    let img
+    
+    let imgDir = './assets/img/'
+    switch(title){
+        case 'card generator': img = imgDir + 'demo_card-generator.png'; break
+        case 'burger logger': img= imgDir + 'bear-tongue.png'; break
+        case 'Mood Food and Chill': img= imgDir + 'demo_mfc.png'
+    }
 
-    const createBtn = (href, message) => `<a href='${href}'><button type='submit' class='btn btn-primary btn-sm btn-block'>${message}</button></a>`
+    let imgEl
+    if (!img){imgEl = ''} else {imgEl = `<img src="${img}" class="card-img-top img-fluid" alt="...">`}
+
+    const createBtn = (href, message) => `<a href='${href}'><button type='submit' class='btn btn-primary btn-sm btn-block' style='height:100%;width:100%'>${message}</button></a>`
     let deployBtn = ''
-    if (deployment != ''){
+    if (deployment !== '' && deployment !== null){
         deployBtn = createBtn(deployment, 'Go to deployed app')
     }
     let repoBtn = ''
-    if (url != ''){
+    if (url !== '' && url !== null){
         repoBtn = `<a href='${url}'><img src='./assets/img/icon_github.webp' class='imgFoot'></a>`
     }
-    console.log(document.querySelector('body'))
+
+
+
+    
     document.querySelector(`#portfolio`).innerHTML += ` <div class="col-12 col-sm-6 col-md-4 mt-2">`+
-        `<section><div class="card"  href="index.html">`+
-            `<img src="${img}" class="card-img-top" alt="...">`+
-                `<div class="card-body">`+
+        `<section style='height:100%'><div class="card" style='height:100%' href="index.html">`+
+            imgEl+
+                `<div class="card-body" >`+
                 `<h5 class="card-title">${title}</h5>`+
                 `<p class="card-text">${desc}</p>`+
                 `</div>`+
-                `<div class="card-footer"><div class='row'>`+
-                    `<div class='col'> ${deployBtn}</div>`+
-                    `<div class='col'>${repoBtn}</div>`+
+                `<div class="card-footer p-0"><div class='row no-gutters' style='width:100%;height:100%'>`+
+                    `<div class='col no-gutters' style='width:100%;height:100%'> ${deployBtn}</div>`+
+                    `<div class='col no-gutters' style='width:100%;height:100%'>${repoBtn}</div>`+
                 `</div></div>`+
             `</div></section>`+
         `</div>`
@@ -45,7 +61,7 @@ function portfolioItemGenerator(repo, index){
 
 const navbar = ()=>{
     document.querySelector(`#navbar`).innerHTML = `<nav class="navbar navbar-expand-lg navbar-dark">`+
-        `<a class="navbar-brand" href="#">Eddi Esteban</a>`+
+        `<span class="navbar-brand" href="#">Eddi Esteban</span>`+
         `<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">`+
             `<span class="navbar-toggler-icon"></span>`+
         `</button>`+
@@ -65,6 +81,7 @@ function mainApp(){
 }
 mainApp()
 
+// navbar that appears when scrolling up and disappears when scrolling down
 // var prevScrollpos = window.pageYOffset;
 // window.onscroll = function() {
 //   var currentScrollPos = window.pageYOffset;
@@ -102,14 +119,9 @@ async function requestRepos(){
             repos.sort((a, b) => (Date.parse(a.created_at) < Date.parse(b.created_at)) ? 1 : -1)
             localStorage.repos = JSON.stringify(repos)
         }
-        repos.forEach((repo, i)=>portfolioItemGenerator(repo, i))
+        repos.forEach((repo)=>portfolioItemGenerator(repo))
 
     }
 })()
 
 
-// const codeQuiz = {
-//     name: 'Javascript Quiz',
-//     img: '',
-
-// }
