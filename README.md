@@ -6,7 +6,7 @@ The home has a short bio as well as a picture of myself. The portfolio page requ
 
 ## Demonstration
 
-![Demo](./assets/img/portfolio_demo_2020-06-10.gif)
+![Demo](./github/portfolio_demo_2020-06-10.gif)
 
 ## Usage
 
